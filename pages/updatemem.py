@@ -101,7 +101,7 @@ def members(pathname,search):
             values=[]
             cols=["Member ID","Name","Membership"]
             df = db.querydatafromdatabase(sql, values, cols)
-            if df.shape:    
+            if df.shape[0]:    
                 if df['Membership'][0]=='Probationary':
                     stat='Regular'
                 elif df['Membership'][0]=='Unaffiliated':

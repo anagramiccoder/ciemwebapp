@@ -1,9 +1,7 @@
 
 from dash import html,dash_table,dcc
-import dash
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-import pandas as pd
 from app import app
 from apps import dbconnect as db
 navigationpanel = html.Nav([html.Div([
@@ -95,13 +93,13 @@ Input('filtersearch','value'),
 def members(pathname,namesearch,filterdd,filtersearch):
     if pathname=="/members":
         sql="""
-        SELECT member_id,(first_name||' '||middle_name||' '||last_name||' '||suffix) as full_name,membership_type,app_batch,year_standing,degree_program,other_org_affiliation,email 
+        SELECT member_id,(first_name||' '||middle_name||' '||last_name||' '||suffix) as full_name,birthdate,membership_type,app_batch,year_standing,degree_program,other_org_affiliation,email,present_address
         from PERSON join upciem_member 
         ON person.valid_id=upciem_member.valid_id
         WHERE True
             """
         values=[]
-        cols=["Member ID","Name","Membership","App Batch","Year Standing","Degree Program","Other Orgs","Email"]
+        cols=["Member ID","Name","Birthday","Membership","App Batch","Year Standing","Degree Program","Other Orgs","Email","Present Address"]
         if namesearch:
             sql+="""AND (first_name||' '||middle_name||' '||last_name||' '||suffix) ILIKE %s"""
             values+={f"%{namesearch}%"}
@@ -123,7 +121,7 @@ def members(pathname,namesearch,filterdd,filtersearch):
         columns=[{'name': i, 'id': i} for i in df.columns],  # Specify column names and IDs
         style_cell={
             "height":"50px",
-            'text-align':'left',
+            'text-align':'center',
             "background-color":"#EEF2FA",
             "color":"#273250",
             },

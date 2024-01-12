@@ -39,7 +39,7 @@ def try_log(submit,uname,pword):
                     values=[]
                     cols=['pass']
                     df = db.querydatafromdatabase(sql, values, cols)
-                    if df.shape:
+                    if df.shape[0]:
                         if (df['pass'][0]==pword):
                             print('authenticated')
                             return dash.no_update,{'isAuthenticated':True,'acc':uname}

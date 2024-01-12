@@ -111,7 +111,7 @@ from person where account_id=
         values=[]
         cols=['fname','mname','lname','sfx','bday','cn','ecn','em','vid','pradd','peadd']
         df = db.querydatafromdatabase(sql, values, cols)
-        if df.shape:
+        if df.shape[0]:
             return df['fname'][0],df['mname'][0],df['lname'][0],df['sfx'][0],df['bday'][0], df['cn'][0],df['ecn'][0],df['em'][0],df['vid'][0],df['pradd'][0],df['peadd'][0]
         raise PreventUpdate
     else:

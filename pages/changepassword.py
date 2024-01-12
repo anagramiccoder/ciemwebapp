@@ -81,7 +81,7 @@ def update_pass(pathname,data):
         values=[]
         cols=['pw']
         df = db.querydatafromdatabase(sql, values, cols)
-        if df.shape:
+        if df.shape[0]:
             return [{'cpw':df['pw']}]
 
     raise PreventUpdate
