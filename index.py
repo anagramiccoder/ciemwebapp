@@ -58,6 +58,7 @@ def displaypage (timestamp,pathname,data):
                     elif pathname=="/generate-report":
                         returnlayout=generatereport.layout
                     elif pathname=="/managers":
+                        pathname="/managers"
                         returnlayout=managers.layout
                     elif pathname=="/members":
                         returnlayout=members.layout

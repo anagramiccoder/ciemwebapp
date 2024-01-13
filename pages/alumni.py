@@ -29,7 +29,7 @@ navigationpanel = html.Nav([html.Div([
         html.H4("Account Management"),
         html.A("Update Member Status", href="/update-member",),
         html.A("Update Alumni Status", href="/update-alumni",),
-        html.A("Managers", href="/managers",),
+        html.A("Managers", href="/managers?mode=view",),
     ],className="module-div"),
     html.Div([
         html.H4("Generation"),
