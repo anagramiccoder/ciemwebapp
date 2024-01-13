@@ -330,3 +330,6 @@ input[type="checkbox"]:checked ~ .modal-background {
 .red-btn:hover{
     background-color:#fa5555;
 }
+.red{
+    background-color: #c50000;
+}
