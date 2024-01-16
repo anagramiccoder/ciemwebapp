@@ -7,52 +7,6 @@ from dash.exceptions import PreventUpdate
 import pandas as pd
 from app import app
 from apps import dbconnect as db
-navigationpanel = html.Nav([html.Div([
-        html.H4("Main"),
-        html.A("Home", href="/home",),
-        html.A("Logout", href="#",id='lo',n_clicks=0),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Profile"),
-        html.A("Edit Profile", href="/edit-profile",),
-        html.A("Change Password", href="/change-password",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Reaffilation"),
-        html.A("Reaffilation Form",href="/reaffiliate"),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Members"),
-        html.A("All Members", href="/members",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Alumni"),
-        html.A("All Alumni", href="/alumni",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Account Management"),
-        html.A("Update Member Status", href="#",className="disabled-a"),
-        html.A("Update Alumni Status", href="/update-alumni",),
-        html.A("Managers", href="/managers?mode=view",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Generation"),
-        html.A("Generate Report", href="/generate-report",),
-    ],className="module-div"),
-],className="nav")
-
-sectionbody=html.Div([
-    html.H2("Update Member Status"),
-    html.Div(id='mem-info',children=[
-        html.Div([html.Div([html.H3('Full Name: '),
-        html.H3(id='fullname',style={'font-weight':'normal'}),],className='flex half'),
-        html.Div([html.H3('ID: '),
-        html.H3(id='mem-id-up',style={'font-weight':'normal'}),],className='flex half'),
-        html.Div([html.H3('Membership Status: '),
-        html.H3(id='up-mem-status',style={'font-weight':'normal'}),],className='flex half')],className='flex')
-    ]),
-    html.Div([html.Button(['Transfer to Alumni'],id='trans-alum-btn',n_clicks=0,className='choice'),html.Button('Reaffiliate',id='up-ref-btn',n_clicks=0,className='choice'),html.Button('Update to Regular',id='up-stat-btn',n_clicks=0,className='choice'),html.A([html.Button('Back to List',className='choice')],href='/update-member'),])
-],className="body")
 modal=html.Div([
     html.Label(className='hidden modal-background',id='modal-background'),
     html.Div([
@@ -64,12 +18,18 @@ modal=html.Div([
     ],className='hidden modal',id='main-modal')
 ])
 layout=html.Div([modal,
-        html.Div([html.A([html.Div([html.Img(src="./assets/logo.png",className="logo"),html.H2("UP CEIM")],className="flex center")],href="/home")],className="topbar"),
-        html.Div([
-            navigationpanel, 
-            sectionbody,
-            ],
-            className='flex container'),])
+    html.H2("Update Member Status"),
+    html.Div(id='mem-info',children=[
+        html.Div([html.Div([html.H3('Full Name: '),
+        html.H3(id='fullname',style={'font-weight':'normal'}),],className='flex half'),
+        html.Div([html.H3('ID: '),
+        html.H3(id='mem-id-up',style={'font-weight':'normal'}),],className='flex half'),
+        html.Div([html.H3('Membership Status: '),
+        html.H3(id='up-mem-status',style={'font-weight':'normal'}),],className='flex half')],className='flex')
+    ]),
+    html.Div([html.Button(['Transfer to Alumni'],id='trans-alum-btn',n_clicks=0,className='choice'),html.Button('Reaffiliate',id='up-ref-btn',n_clicks=0,className='choice'),html.Button('Update to Regular',id='up-stat-btn',n_clicks=0,className='choice'),html.A([html.Button('Back to List',className='choice')],href='/update-member'),])
+],className="body")
+
 @app.callback(
 [
 Output('fullname', 'children'),

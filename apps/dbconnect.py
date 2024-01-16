@@ -4,7 +4,7 @@ import pandas as pd
 def getdblocation():
     db = psycopg2.connect(
         host='localhost',
-        database='CIEM',
+        database='New_CIEM',
         user='postgres',
         port=5433,
         password='1234'

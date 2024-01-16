@@ -4,41 +4,17 @@ from dash.exceptions import PreventUpdate
 from datetime import date,datetime
 from apps import dbconnect as db
 from app import app
-navigationpanel = html.Nav([html.Div([
-        html.H4("Main"),
-        html.A("Home", href="/home",),
-        html.A("Logout", href="#",),
-    ],className="module-div"),
+layout=html.Div([
     html.Div([
-        html.H4("Profile"),
-        html.A("Edit Profile", href="#",className="disabled-a"),
-        html.A("Change Password", href="/change-password",),
-    ],className="module-div"),
-     html.Div([
-        html.H4("Reaffilation"),
-        html.A("Reaffilation Form",href="/reaffiliate"),
-    ],className="module-div"),
+    html.Label(className='hidden modal-background',id='ep-bg'),
     html.Div([
-        html.H4("Members"),
-        html.A("All Members", href="/members",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Alumni"),
-        html.A("All Alumni", href="/alumni",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Account Management"),
-        html.A("Update Member Status", href="/update-member",),
-        html.A("Update Alumni Status", href="/update-alumni",),
-        html.A("Managers", href="/managers?mode=view",),
-    ],className="module-div"),
-    html.Div([
-        html.H4("Generation"),
-        html.A("Generate Report", href="/generate-report",),
-    ],className="module-div"),
-],className="nav")
-
-sectionbody=html.Div([
+        html.Div(
+            [html.H3("Action Done")],className='modal-header'
+        ),
+        html.P("Successfully Edited the Profile"),
+        html.A([html.Button("Proceed",className='enter')],href='/edit-profile')
+    ],className='hidden modal',id='ep-main')
+]),
     html.H2("Edit Profile"),
     html.Div([
         html.Div([
@@ -61,23 +37,7 @@ sectionbody=html.Div([
         html.Div([html.Button("Update Profile",id='up-prof-btn',n_clicks=0)],className='flex last')
     ],className='edit'),
 ],className="body")
-layout=html.Div([
-    html.Div([
-    html.Label(className='hidden modal-background',id='ep-bg'),
-    html.Div([
-        html.Div(
-            [html.H3("Action Done")],className='modal-header'
-        ),
-        html.P("Successfully Edited the Profile"),
-        html.A([html.Button("Proceed",className='enter')],href='/edit-profile')
-    ],className='hidden modal',id='ep-main')
-]),
-        html.Div([html.A([html.Div([html.Img(src="./assets/logo.png",className="logo"),html.H2("UP CEIM")],className="flex center")],href="/home")],className="topbar"),
-        html.Div([
-            navigationpanel, 
-            sectionbody,
-            ],
-            className='flex container'),])
+
 @app.callback(
 [
     Output('edit-fname','value'),

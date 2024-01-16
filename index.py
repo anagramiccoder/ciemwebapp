@@ -7,7 +7,7 @@ from dash.exceptions import PreventUpdate
 from datetime import datetime
 # Importing your app definition from app.py so we can use it
 from app import app
-#from apps import commonmodules as cm
+from apps import commonmodule as cm
 from pages import home,alumni,changepassword, editprofile,generatereport,managers,members,reaffiliate,updatealum,updatemember,login,updatemem
 dcc_store=dcc.Store(id='auth', data={'isAuthenticated':False,'acc':"-1"},storage_type='session')
 dcc_loginstore=dcc.Store(id='login-auth',modified_timestamp=-1)
@@ -19,8 +19,13 @@ app.layout = html.Div(
             dcc_store,
             dcc.Location(id='url', refresh=True),
             #cm.navbar,
+            cm.top,
             html.Div(
-                id='page-content',
+                [cm.navigationpanel,
+            html.Div(
+                id='page-content', className='body'
+            )],
+                className='flex container'
             )
     ],
 )
