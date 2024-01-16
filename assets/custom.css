@@ -6,7 +6,6 @@
     flex:20;
     overflow: auto;
 }
-
 .module-div{
     display:flex;
     flex-direction: column;
@@ -41,8 +40,8 @@
 .body{
     flex:80;
     padding: 1%;
+    height: 100%;
     overflow-y: auto;
-    height: 90%;
 }
 /*this is for the top bar, image, links logos etc*/
 .topbar{

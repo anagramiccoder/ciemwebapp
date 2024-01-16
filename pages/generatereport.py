@@ -13,7 +13,7 @@ layout=html.Div([
     dcc.Graph(id='by-batch'),
     dcc.Graph(id='by-year'),
     dcc.Graph(id='by-committee'),
-],className="body")
+])
 
 @app.callback(
     [
