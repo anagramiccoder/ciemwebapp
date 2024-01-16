@@ -4,6 +4,7 @@ from dash import html,dcc
 from dash.exceptions import PreventUpdate
 from app import app
 from apps import dbconnect as db
+from apps import commonmodule as cm
 modal=html.Div([
     html.Label(className='hidden modal-background',id='cp-bg'),
     html.Div([
@@ -14,7 +15,12 @@ modal=html.Div([
         html.A([html.Button("Proceed",className='enter', id='pw-btn')],href='/change-password')
     ],className='hidden modal',id='cp-main')
 ])
-layout=html.Div([
+layout=html.Div(
+    [
+        cm.top,
+        html.Div([
+            cm.navigationpanel,
+        html.Div([
     modal,
     html.H2("Change Password"),
     html.Div([
@@ -24,6 +30,9 @@ layout=html.Div([
         html.Button("Change Password",id='change-pw',className='choice',n_clicks=0)
     ],className='flex row')
 ],className="body")
+        ],className='flex container')
+    ]
+)
 @app.callback(
 [
 Output('cur-pass', 'data')

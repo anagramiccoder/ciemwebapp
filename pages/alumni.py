@@ -3,7 +3,12 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from app import app
 from apps import dbconnect as db
+from apps import commonmodule as cm
 layout=html.Div([
+    cm.top,
+    html.Div([
+        cm.navigationpanel,
+    html.Div([
     html.H2("Alumni"),
     html.Div([
         html.Div([html.H5("Search Name"),
@@ -25,6 +30,8 @@ layout=html.Div([
         className="dt"),
 
 ],className="body")
+    ],className='flex container')
+])
 
 @app.callback(
 [

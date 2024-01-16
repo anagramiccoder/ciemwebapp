@@ -103,6 +103,8 @@ div#page-content{
     background-color: #3f66bd;
     display: grid;
   place-items: center;
+  position:absolute;
+  top:0;
 }
 .half{
     flex:1;

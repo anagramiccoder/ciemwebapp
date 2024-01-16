@@ -7,6 +7,7 @@ from dash.exceptions import PreventUpdate
 import pandas as pd
 from app import app
 from apps import dbconnect as db
+from apps import commonmodule as cm
 modal=html.Div([
     html.Label(className='hidden modal-background',id='modal-background'),
     html.Div([
@@ -17,7 +18,12 @@ modal=html.Div([
         html.A([html.Button("Back to List",className='enter')],href='/update-member')
     ],className='hidden modal',id='main-modal')
 ])
-layout=html.Div([modal,
+layout=html.Div([
+    cm.top,
+    html.Div(
+        [
+            cm.navigationpanel,
+            html.Div([modal,
     html.H2("Update Member Status"),
     html.Div(id='mem-info',children=[
         html.Div([html.Div([html.H3('Full Name: '),
@@ -29,6 +35,9 @@ layout=html.Div([modal,
     ]),
     html.Div([html.Button(['Transfer to Alumni'],id='trans-alum-btn',n_clicks=0,className='choice'),html.Button('Reaffiliate',id='up-ref-btn',n_clicks=0,className='choice'),html.Button('Update to Regular',id='up-stat-btn',n_clicks=0,className='choice'),html.A([html.Button('Back to List',className='choice')],href='/update-member'),])
 ],className="body")
+        ],className='flex container'
+    )
+])
 
 @app.callback(
 [

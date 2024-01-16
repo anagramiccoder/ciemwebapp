@@ -4,7 +4,13 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from app import app
 from apps import dbconnect as db
-layout=html.Div([
+from apps import commonmodule as cm
+layout=html.Div(
+    [
+        cm.top,
+        html.Div([
+            cm.navigationpanel,
+            html.Div([
     html.Div([
     html.Label(className='hidden modal-background',id='modal-background'),
     html.Div([
@@ -37,6 +43,9 @@ layout=html.Div([
         className="dt"),
 ],className="body")
 
+        ],className='flex container')
+    ]
+)
 @app.callback(
 [
 Output('members_table', 'children')

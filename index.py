@@ -19,19 +19,16 @@ app.layout = html.Div(
             dcc_store,
             dcc.Location(id='url', refresh=True),
             #cm.navbar,
-            cm.top,
+           
             html.Div(
-                [cm.navigationpanel,
-            html.Div(
-                id='page-content', className='body'
-            )],
-                className='flex container'
-            )
+                id='page-content'
+            ),
     ],
 )
 
 @app.callback(
     [
+        
         Output('page-content', 'children'),
         Output('url','pathname')
     ],

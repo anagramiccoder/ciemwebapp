@@ -4,7 +4,11 @@ from dash.exceptions import PreventUpdate
 from datetime import date,datetime
 from apps import dbconnect as db
 from app import app
+from apps import commonmodule as cm
 layout=html.Div([
+    cm.top,
+    html.Div([cm.navigationpanel,
+        html.Div([
     html.Div([
     html.Label(className='hidden modal-background',id='ep-bg'),
     html.Div([
@@ -37,6 +41,8 @@ layout=html.Div([
         html.Div([html.Button("Update Profile",id='up-prof-btn',n_clicks=0)],className='flex last')
     ],className='edit'),
 ],className="body")
+    ],className='flex container')
+])
 
 @app.callback(
 [

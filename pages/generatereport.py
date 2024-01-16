@@ -7,12 +7,21 @@ import pandas as pd
 import plotly.express as px
 from app import app
 from apps import dbconnect as db
+from apps import commonmodule as cm
 layout=html.Div([
+    cm.top,
+    html.Div(
+        [
+            cm.navigationpanel,
+            html.Div([
     html.H2("Report Generations"),
     html.H3("Tracking"),
     dcc.Graph(id='by-batch'),
     dcc.Graph(id='by-year'),
     dcc.Graph(id='by-committee'),
+],className='body')
+        ], className='flex container'
+    )
 ])
 
 @app.callback(

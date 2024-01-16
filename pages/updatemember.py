@@ -5,8 +5,14 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import pandas as pd
 from app import app
-from apps import dbconnect as db
-layout=html.Div([
+from apps import dbconnect as db 
+from apps import commonmodule as cm
+layout=html.Div(
+    [
+        cm.top,
+        html.Div([
+            cm.navigationpanel,
+            html.Div([
     html.H2("Update Members"),
         html.Div([html.H5("Search Name"),
         dcc.Input(
@@ -17,6 +23,9 @@ layout=html.Div([
     html.Div(id="update_mem",
         className="dt"),
 ],className="body")
+        ],className='flex container')
+    ]
+)
 
 @app.callback(
 [
